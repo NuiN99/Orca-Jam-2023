@@ -21,10 +21,11 @@ public class Projectile : MonoBehaviour
         Vector3 targetDir = (_target.transform.position - transform.position).normalized;
         transform.position += targetDir * (_speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, _target.transform.position) <= 0.5f)
+        if (Vector2.Distance(transform.position, _target.transform.position) <= 0.25f)
         {
             _target.TakeDamage(_damage);
             _onHit?.Invoke();
+            Destroy(gameObject);
         }
     }
 
