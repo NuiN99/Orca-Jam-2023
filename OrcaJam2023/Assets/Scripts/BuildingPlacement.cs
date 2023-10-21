@@ -7,7 +7,6 @@ public class BuildingPlacement : MonoBehaviour
 {
     public Placeable currentPlaceable;
 
-
     void Update()
     {
         if (currentPlaceable == null) return;
