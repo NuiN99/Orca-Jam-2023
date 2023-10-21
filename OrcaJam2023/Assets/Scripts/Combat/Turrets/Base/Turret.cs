@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
     [SerializeField] float rotationSpeed = 5f;
 
     [SerializeField] float detectionRadius = 2.5f;
+    [SerializeField] float fov = 30f;
     [SerializeField] LayerMask targetMask;
 
     [SerializeField] Projectile projectilePrefab;
@@ -33,30 +34,37 @@ public class Turret : MonoBehaviour
     void Start()
     {
         _curInterval = atkInterval;
+
+        //InvokeRepeating(nameof(DetectTarget), 0.25f, 0.25f);
     }
 
     void Update()
     {
         DetectTarget();
-        if (!_target) return;
+        if (_target) RotateToTarget();
 
-        RotateToTarget();
-        ShootOnInterval();
+        _curInterval -= Time.deltaTime;
+        if (!(_curInterval <= 0)) return;
+        _curInterval = atkInterval;
+
+        if (_target && InFOV()) Shoot();
     }
 
     void DetectTarget()
     {
-        RaycastHit2D[] detections = Physics2D.CircleCastAll(transform.position, detectionRadius, Vector3.forward, 0, targetMask);
+        RaycastHit2D[] detections = Physics2D.CircleCastAll(transform.position, detectionRadius, Vector3.right, 0, targetMask);
 
         float closestDist = float.MaxValue;
         foreach (var hit in detections)
         {
-            if (!hit.collider.TryGetComponent(out Health health)) continue;
+            if (!hit.collider.TryGetComponent(out BasicEnemy enemy)) continue;
 
-            if (hit.distance < closestDist)
+            float distFromEnd = Vector2.Distance(enemy.transform.position, enemy.path.waypoints[^1].position);
+
+            if (distFromEnd < closestDist)
             {
-                closestDist = hit.distance;
-                _target = health;
+                closestDist = distFromEnd;
+                _target = enemy.health;
             }
         }
 
@@ -71,14 +79,45 @@ public class Turret : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    void ShootOnInterval()
+    void Shoot()
     {
-        _curInterval -= Time.deltaTime;
-        if (!(_curInterval <= 0)) return;
-
-        _curInterval = atkInterval;
-
         Projectile projectile = Instantiate(projectilePrefab, shootPos.position, Quaternion.identity);
         projectile.Init(_target, projectileSpeed, damage, _turret.OnTargetHit);
+    }
+
+    bool InFOV()
+    {
+        Vector3 targetDir = (_target.transform.position - transform.position).normalized;
+        float targetAngle = Vector3.Angle(targetDir, transform.right);
+
+        if (targetAngle <= fov / 2 && targetAngle >= 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(shootPos.position, targetDir, detectionRadius, targetMask);
+            if (hit)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Vector3 forwardRayPt = shootPos.position + transform.right * detectionRadius;
+        Vector3 leftRayPt = shootPos.position + Quaternion.Euler(0, 0, fov / 2) * transform.right * detectionRadius;
+        Vector3 rightRayPt = shootPos.position + Quaternion.Euler(0, 0, -(fov / 2)) * transform.right * detectionRadius;
+
+        Debug.DrawLine(shootPos.position, forwardRayPt, Color.yellow);
+        Debug.DrawLine(shootPos.position, leftRayPt, Color.yellow);
+        Debug.DrawLine(shootPos.position, rightRayPt, Color.yellow);
+
+        Debug.DrawLine(forwardRayPt, leftRayPt, Color.yellow);
+        Debug.DrawLine(forwardRayPt, rightRayPt, Color.yellow);
+
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+        if(_target) Debug.DrawLine(shootPos.position, _target.transform.position, Color.red);
     }
 }
