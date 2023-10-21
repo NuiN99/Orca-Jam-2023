@@ -41,13 +41,13 @@ public class Turret : MonoBehaviour
     void Update()
     {
         DetectTarget();
-        if (_target) RotateToTarget();
+        //if (_target) RotateToTarget();
 
         _curInterval -= Time.deltaTime;
         if (!(_curInterval <= 0)) return;
         _curInterval = atkInterval;
 
-        if (_target && InFOV()) Shoot();
+        if (_target) Shoot();
     }
 
     void DetectTarget()
@@ -105,7 +105,7 @@ public class Turret : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector3 forwardRayPt = shootPos.position + transform.right * detectionRadius;
+        /*Vector3 forwardRayPt = shootPos.position + transform.right * detectionRadius;
         Vector3 leftRayPt = shootPos.position + Quaternion.Euler(0, 0, fov / 2) * transform.right * detectionRadius;
         Vector3 rightRayPt = shootPos.position + Quaternion.Euler(0, 0, -(fov / 2)) * transform.right * detectionRadius;
 
@@ -114,7 +114,7 @@ public class Turret : MonoBehaviour
         Debug.DrawLine(shootPos.position, rightRayPt, Color.yellow);
 
         Debug.DrawLine(forwardRayPt, leftRayPt, Color.yellow);
-        Debug.DrawLine(forwardRayPt, rightRayPt, Color.yellow);
+        Debug.DrawLine(forwardRayPt, rightRayPt, Color.yellow);*/
 
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
