@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlaceable
 {
-    void Place(Vector3 pos);
+    public void Place(Vector3 pos);
 }

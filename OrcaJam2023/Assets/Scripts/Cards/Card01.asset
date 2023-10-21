@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929df8f47108bd94fb17c7289561991a, type: 3}
   m_Name: Card01
   m_EditorClassIdentifier: 
-  cost: 100
-  cardName: 1st Card
-  description: This is the 1st card
+  ID: 0
+  rarity: 0
+  cost: 10
+  cardName: Gunner
+  description: it shoots it's gun!
+  turret: {fileID: 2676057458697926699, guid: 215e2773558b67747b206236a973757b, type: 3}

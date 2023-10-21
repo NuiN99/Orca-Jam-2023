@@ -1,3 +1,4 @@
+using FullscreenEditor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,11 +6,27 @@ using UnityEngine;
 
 public class BuildingPlacement : MonoBehaviour
 {
-    public Placeable currentPlaceable;
+    public static BuildingPlacement instance;
+    
+    public GameObject currentPlaceable;
+    public Card selectedCard;
+
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+
+        instance = this;
+    }
 
     void Update()
     {
+
         if (currentPlaceable == null) return;
+
 
         MainCamera mainCam = MainCamera.instance;
         Vector2 mousePos = mainCam.MousePos;
@@ -22,10 +39,31 @@ public class BuildingPlacement : MonoBehaviour
 
         Vector2 clampedMousePos = new Vector2(clampedX, clampedY);
         currentPlaceable.transform.position = clampedMousePos;
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            currentPlaceable.GetComponent<IPlaceable>().Place(currentPlaceable.transform.position);
+            currentPlaceable = null;
+            Destroy(selectedCard.gameObject);
+            selectedCard = null;
+           
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Destroy(currentPlaceable);
+            selectedCard.ToggleHighlight();
+            selectedCard = null;
+
+        }
+
+       
+
     }
 
-    public void SetHeldObject(Placeable placeable)
+    public void SetHeldObject(GameObject placeable)      
     {
-        currentPlaceable = placeable;
+        currentPlaceable = Instantiate(selectedCard.CardData.turret); ;
     }
 }

@@ -15,6 +15,8 @@ public class PlayerUI : MonoBehaviour
         {
             Destroy(this);
         }
+
+        instance = this;
     }
 
 
