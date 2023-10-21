@@ -20,7 +20,7 @@ public class WaveManager : MonoBehaviour
     public static event Action OnCompletedWave;
 
     int EnemiesPerWave => currentLevel * currentWave + Random.Range(3, 8);
-    int TimeBetweenEnemies => Random.Range(1, 3) * (10 / (currentLevel * currentWave));
+    float TimeBetweenEnemies => Random.Range(1, 3) * (1f / (currentLevel * currentWave));
 
     void Awake()
     {
@@ -37,8 +37,8 @@ public class WaveManager : MonoBehaviour
     {
         int totalSpawnedEnemies = 0;
         int miniWaveSpawnedEnemies = 0;
-        int timeBetweenEnemies = TimeBetweenEnemies;
-        int breakTime = timeBetweenEnemies * 10;
+        float timeBetweenEnemies = TimeBetweenEnemies;
+        float breakTime = Random.Range(0.5f, 2f);
         int breakCount = enemyCount / Random.Range(5, 10);
 
         while (totalSpawnedEnemies < enemyCount)
@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour
             Instantiate(randEnemy, _path.waypoints[0].position, Quaternion.identity);
             miniWaveSpawnedEnemies++;
             totalSpawnedEnemies++;
-            yield return timeBetweenEnemies;
+            yield return new WaitForSeconds(timeBetweenEnemies);
 
             if (miniWaveSpawnedEnemies >= breakCount)
             {
@@ -71,12 +71,12 @@ public class WaveManager : MonoBehaviour
 
     BasicEnemy[] GetRandomEnemyArray()
     {
-        int rand = Random.Range(0, 4);
+        int rand = Random.Range(0, 3);
         return rand switch
         {
-            1 => general,
-            2 => tank,
-            3 => fast,
+            0 => general,
+            1 => tank,
+            2 => fast,
             _ => null
         };
     }
