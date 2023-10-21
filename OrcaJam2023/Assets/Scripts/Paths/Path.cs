@@ -14,11 +14,11 @@ public class Path : MonoBehaviour
 
     void Start()
     {
-        foreach (Vector3 point in PathCreation.CreatePathPoints(start, end))
+        /*foreach (Vector3 point in PathCreation.CreatePathPoints(start, end))
         {
             Transform waypoint = Instantiate(waypointPrefab, point, Quaternion.identity).transform;
             waypoints.Add(waypoint);
             waypoint.SetParent(transform);
-        }
+        }*/
     }
 }
