@@ -9,7 +9,7 @@ public class Deck : MonoBehaviour
     public CardData[] cardDataArray;
     public GameObject cardPrefab;
     public GameObject handGameObject;
-    [SerializeField] int handSize;
+    public int handSize;
     
     // Start is called before the first frame update
     void Awake()
@@ -17,6 +17,13 @@ public class Deck : MonoBehaviour
         //Subscribe to events
         GameManager.drawCard += DrawCard;
         GameManager.startGame += DrawHand;
+    }
+
+    private void OnDestroy()
+    {
+        //Subscribe to events
+        GameManager.drawCard -= DrawCard;
+        GameManager.startGame -= DrawHand;
     }
 
     public void DrawCard()

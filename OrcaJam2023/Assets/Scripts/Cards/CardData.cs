@@ -6,7 +6,10 @@ using UnityEngine;
 public class CardData : ScriptableObject
 {
     public int ID;
+    public int rarity;
     public int cost;
     public string cardName;
     public string description;
+    public GameObject turret;
+
 }

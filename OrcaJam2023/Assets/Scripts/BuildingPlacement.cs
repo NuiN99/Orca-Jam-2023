@@ -5,7 +5,18 @@ using UnityEngine;
 
 public class BuildingPlacement : MonoBehaviour
 {
+    public static BuildingPlacement instance;
+    
+    
     public Placeable currentPlaceable;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+    }
 
     void Update()
     {
@@ -24,7 +35,7 @@ public class BuildingPlacement : MonoBehaviour
         currentPlaceable.transform.position = clampedMousePos;
     }
 
-    public void SetHeldObject(Placeable placeable)
+    public void SetHeldObject(Placeable placeable)      
     {
         currentPlaceable = placeable;
     }

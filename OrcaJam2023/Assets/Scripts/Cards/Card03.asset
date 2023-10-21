@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929df8f47108bd94fb17c7289561991a, type: 3}
   m_Name: Card03
   m_EditorClassIdentifier: 
+  ID: 0
   cost: 50
   cardName: 3rd card
   description: This is the 3rd card
+  turret: {fileID: 5787913721777656044, guid: 2dd28fae37e3a184d859a7e0adfee52a, type: 3}
