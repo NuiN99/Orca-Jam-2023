@@ -43,26 +43,37 @@ public class BuildingPlacement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+
+           
+            GameManager.instance.gold -= selectedCard.CardData.cost;
+            PlayerUI.instance.UpdateGold();
             currentPlaceable.GetComponent<IPlaceable>().Place(currentPlaceable.transform.position);
             currentPlaceable = null;
             Destroy(selectedCard.gameObject);
             selectedCard = null;
-           
+
+
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            Destroy(currentPlaceable);
-            selectedCard.ToggleHighlight();
-            selectedCard = null;
-
+            ReleaseCard();
         }
 
        
     }
 
-    public void SetHeldObject(GameObject placeable)      
+    void ReleaseCard()
     {
-        currentPlaceable = Instantiate(selectedCard.CardData.turret); ;
+        Destroy(currentPlaceable);
+        selectedCard.ToggleHighlight();
+        selectedCard = null;
     }
+
+    /*
+    public void SetHeldObject()      
+    {
+        currentPlaceable = Instantiate(selectedCard.CardData.turret);
+    }
+    */
 }

@@ -28,9 +28,18 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        BuildingPlacement.instance.selectedCard = this;
-        BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
-        ToggleHighlight();   
+        if (GameManager.instance.gold - CardData.cost >= 0)
+        {
+            BuildingPlacement.instance.selectedCard = this;
+            BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
+            ToggleHighlight();
+        }
+        else
+        {
+            print("Not Enough Gold");
+            MoveDown();
+        }
+          
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -41,12 +50,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (transform.localPosition.y > -75)
-        {
-            StopCoroutine(runningCoroutine);
-            transform.localPosition = new Vector3(transform.localPosition.x,-75,transform.localPosition.z);
-        }//if it has moved 
-            
+        MoveDown();
     }
 
 
@@ -58,14 +62,23 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         float time = 0;
         Vector3 startPosition = transform.position;
-        Vector3 finalPosition = startPosition + transform.up * 25;
+        Vector3 finalPosition = startPosition + transform.up * 75;
 
-        while (time / LerpTime < 1) {
+        while (time / LerpTime <= 1) {
             time += Time.deltaTime;
-            transform.position = Vector3.Slerp(startPosition, finalPosition, time / LerpTime);
+            transform.position = Vector3.Lerp(startPosition, finalPosition, time / LerpTime);
             yield return null;
         }
 
+    }
+
+    void MoveDown()
+    {
+        if (transform.localPosition.y > -75)
+        {
+            StopCoroutine(runningCoroutine);
+            transform.localPosition = new Vector3(transform.localPosition.x, -75, transform.localPosition.z);
+        }
     }
 
 

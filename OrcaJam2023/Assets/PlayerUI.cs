@@ -20,8 +20,26 @@ public class PlayerUI : MonoBehaviour
     }
 
 
-    public void UpdateGold(int gold)
+    private void OnEnable()
+    {
+        GameManager.startGame += UpdateGold;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.startGame -= UpdateGold;
+    }
+
+
+
+    public void SetGold(int gold)
     {
         playerGoldText.text = gold.ToString();
     }
+
+    public void UpdateGold()
+    {
+        playerGoldText.text = GameManager.instance.gold.ToString();
+    }
+
 }
