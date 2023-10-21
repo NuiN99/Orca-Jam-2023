@@ -59,7 +59,6 @@ public class BuildingPlacement : MonoBehaviour
         }
 
        
-
     }
 
     public void SetHeldObject(GameObject placeable)      
