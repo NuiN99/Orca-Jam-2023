@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9018267815057184375}
   - component: {fileID: 4931424233977472487}
   - component: {fileID: 4723280705578791278}
+  - component: {fileID: -5561114640981184628}
   m_Layer: 0
   m_Name: SniperTurret
   m_TagString: Untagged
@@ -123,6 +124,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5561114640981184628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871366569138413065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 304157e878da314448a96b2d05fb67c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7598742629667425675
 GameObject:
   m_ObjectHideFlags: 0
