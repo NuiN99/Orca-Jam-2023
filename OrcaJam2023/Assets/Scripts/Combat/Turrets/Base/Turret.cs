@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IPlaceable
 {
     Health _target;
 
@@ -21,6 +21,8 @@ public class Turret : MonoBehaviour
     [SerializeField] Projectile projectilePrefab;
 
     [SerializeField] Transform shootPos;
+
+    public CardData CardData { get; set; }
 
     IShooter _turret;
 
@@ -119,5 +121,10 @@ public class Turret : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
         if(_target) Debug.DrawLine(shootPos.position, _target.transform.position, Color.red);
+    }
+
+    void IPlaceable.Place(Vector3 pos)
+    {   
+        transform.position = pos;
     }
 }

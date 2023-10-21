@@ -12,14 +12,14 @@ public class Deck : MonoBehaviour
     public int handSize;
     
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
         //Subscribe to events
         GameManager.drawCard += DrawCard;
         GameManager.startGame += DrawHand;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         //Subscribe to events
         GameManager.drawCard -= DrawCard;
