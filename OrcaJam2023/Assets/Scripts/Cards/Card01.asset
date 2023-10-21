@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Card01
   m_EditorClassIdentifier: 
   ID: 0
-  cost: 100
-  cardName: 1st Card
-  description: This is the 1st card
-  turret: {fileID: 5787913721777656044, guid: 2dd28fae37e3a184d859a7e0adfee52a, type: 3}
+  rarity: 0
+  cost: 10
+  cardName: Gunner
+  description: it shoots it's gun!
+  turret: {fileID: 2676057458697926699, guid: 215e2773558b67747b206236a973757b, type: 3}

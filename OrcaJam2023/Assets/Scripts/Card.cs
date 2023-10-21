@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,9 +6,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
    public CardData CardData { get; set; }
+   [SerializeField] GameObject highlight;
    [SerializeField] TMP_Text cost;
    [SerializeField] TMP_Text cardName;
    [SerializeField] TMP_Text description;
@@ -23,9 +25,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         }
     }
     
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log(this.gameObject.name + " Was Clicked.");
+        BuildingPlacement.instance.selectedCard = this;
+        BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
         ToggleHighlight();
         
     }
@@ -43,8 +47,8 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     }
 
 
-    void ToggleHighlight() { 
-        
+    public void ToggleHighlight() {
+        highlight.SetActive(!highlight.activeSelf);
     }
 
 }

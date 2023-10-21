@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Card02
   m_EditorClassIdentifier: 
   ID: 0
+  rarity: 0
   cost: 30
-  cardName: 2nd card
-  description: This is the 2nd card
-  turret: {fileID: 5787913721777656044, guid: 2dd28fae37e3a184d859a7e0adfee52a, type: 3}
+  cardName: Sniper
+  description: 'This one also shoots! '
+  turret: {fileID: 6871366569138413065, guid: 9302e963dd3502748837d552b187fd9f, type: 3}
