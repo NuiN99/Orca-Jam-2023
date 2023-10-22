@@ -9,10 +9,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static Action startGame;
     public static Action drawCard;
-
+    
 
     //player data
-    public int gold = 9999;
+    public int gold;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,11 +26,26 @@ public class GameManager : MonoBehaviour
       
     }
 
+    private void OnEnable()
+    {
+        BasicEnemy.OnDeath += AddGold;   
+    }
+    private void OnDisable()
+    {
+        BasicEnemy.OnDeath -= AddGold;
+    }
+
     private void Start()
     {
         // trigger draw card x times
         startGame();
         // 
+    }
+
+    void AddGold(int amount)
+    {
+        gold += amount;
+        PlayerUI.instance.UpdateGold();
     }
 
 

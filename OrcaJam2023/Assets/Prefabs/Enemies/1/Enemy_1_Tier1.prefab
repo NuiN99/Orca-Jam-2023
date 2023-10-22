@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  gold: 10
 --- !u!114 &2682506899407916613
 MonoBehaviour:
   m_ObjectHideFlags: 0

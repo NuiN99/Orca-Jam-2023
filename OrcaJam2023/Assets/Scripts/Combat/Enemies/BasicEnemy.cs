@@ -6,6 +6,9 @@ using UnityEngine;
 public class BasicEnemy : MonoBehaviour, IDamageable
 {
     public Health health;
+    public int gold;
+
+    public static event Action<int> OnDeath;
 
     void Awake()
     {
@@ -20,6 +23,9 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     void IDamageable.Die()
     {
         EnemyManager.instance.RemoveEnemy(this);
+
+        OnDeath?.Invoke(gold);
+
         Destroy(gameObject);
     }
 }

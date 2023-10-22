@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
 {
     public int currentLevel = 1;
     public int currentWave = 1;
+    public int currentEnemyCount = 0;
+    public WaveManager instance;
 
     [SerializeField] BoxCollider2D spawnCollider;
     Bounds SpawnBounds => spawnCollider.bounds;
@@ -34,6 +37,32 @@ public class WaveManager : MonoBehaviour
     int EnemiesPerWave => currentLevel * currentWave + Random.Range(3, 8);
     float TimeBetweenEnemies => Random.Range(1, 3) * (1f / (currentLevel * currentWave));
 
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+
+        instance = this;
+
+    }
+
+
+    private void OnEnable()
+    {
+        GameManager.startGame += StartWave;
+        BasicEnemy.OnDeath += (_) => ReduceEnemyCount();
+    }
+
+    private void OnDisable()
+    {
+        GameManager.startGame -= StartWave;
+        BasicEnemy.OnDeath -= (_) => ReduceEnemyCount();
+    }
+
+
+
     [ContextMenu("Start Wave")]
     public void StartWave()
     {
@@ -52,6 +81,7 @@ public class WaveManager : MonoBehaviour
         {
             BasicEnemy randEnemy = GetEnemy();
             Instantiate(randEnemy, RandomPos, Quaternion.identity);
+            currentEnemyCount++;
             miniWaveSpawnedEnemies++;
             totalSpawnedEnemies++;
             yield return new WaitForSeconds(timeBetweenEnemies);
@@ -65,7 +95,22 @@ public class WaveManager : MonoBehaviour
             }
         }
 
+        yield return new WaitUntil(()=> currentEnemyCount == 0);
+
+        currentWave++;
+
+        currentLevel = currentWave switch
+        {
+            <= 5 => 1,
+            > 5 and <= 10 => 2,
+            > 10 => 3,
+        };
+
         OnCompletedWave?.Invoke(currentWave);
+       
+        yield return new WaitForSeconds(5);
+
+        StartWave();
     }
 
     BasicEnemy GetEnemy()
@@ -88,5 +133,10 @@ public class WaveManager : MonoBehaviour
             2 => fast,
             _ => null
         };
+    }
+
+    void ReduceEnemyCount()
+    {
+        currentEnemyCount--;
     }
 }

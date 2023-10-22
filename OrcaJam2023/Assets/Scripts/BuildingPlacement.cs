@@ -43,16 +43,12 @@ public class BuildingPlacement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-
-           
             GameManager.instance.gold -= selectedCard.CardData.cost;
             PlayerUI.instance.UpdateGold();
             currentPlaceable.GetComponent<IPlaceable>().Place(currentPlaceable.transform.position);
             currentPlaceable = null;
             Destroy(selectedCard.gameObject);
             selectedCard = null;
-
-
         }
 
         if (Input.GetMouseButtonDown(1))
