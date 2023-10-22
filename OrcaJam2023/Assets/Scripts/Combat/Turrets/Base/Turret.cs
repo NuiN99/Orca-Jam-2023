@@ -5,40 +5,28 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour, IPlaceable
 {
-    Health _target;
+    protected Health target;
 
     
-    [SerializeField] int damage = 1;
+    [SerializeField] protected int damage = 1;
     [SerializeField] float atkInterval = 0.25f;
-    [SerializeField] float projectileSpeed = 1f;
+    [SerializeField] protected float projectileSpeed = 1f;
 
     [SerializeField] float rotationSpeed = 5f;
 
     [SerializeField] float detectionRadius = 2.5f;
     [SerializeField] float fov = 30f;
-    [SerializeField] LayerMask targetMask;
+    [SerializeField] protected LayerMask targetMask;
 
-    [SerializeField] Projectile projectilePrefab;
+    [SerializeField] protected Projectile projectilePrefab;
 
-    [SerializeField] Transform shootPos;
+    [SerializeField] protected Transform shootPos;
 
     public CardData CardData { get; set; }
 
-    IShooter _turret;
-
     float _curInterval;
 
-    void Awake()
-    {
-        _turret = GetComponent<IShooter>();
-    }
-
-    void Start()
-    {
-        _curInterval = atkInterval;
-
-        //InvokeRepeating(nameof(DetectTarget), 0.25f, 0.25f);
-    }
+    public Action onHit;
 
     void Update()
     {
@@ -46,10 +34,10 @@ public class Turret : MonoBehaviour, IPlaceable
         //if (_target) RotateToTarget();
 
         _curInterval -= Time.deltaTime;
-        if (!(_curInterval <= 0)) return;
+        if (!(_curInterval <= 0) || target == null) return;
         _curInterval = atkInterval;
 
-        if (_target) Shoot();
+        if (target) Shoot();
     }
 
     void DetectTarget()
@@ -66,30 +54,29 @@ public class Turret : MonoBehaviour, IPlaceable
             if (distFromEnd < closestDist)
             {
                 closestDist = distFromEnd;
-                _target = enemy.health;
+                target = enemy.health;
             }
         }
 
-        if(detections.Length <= 0) _target = null;
+        if(detections.Length <= 0) target = null;
     }
 
     void RotateToTarget()
     {
-        Vector3 targetDir = _target.transform.position - transform.position;
+        Vector3 targetDir = target.transform.position - transform.position;
         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    void Shoot()
+    public virtual void Shoot()
     {
-        Projectile projectile = Instantiate(projectilePrefab, shootPos.position, Quaternion.identity);
-        projectile.Init(_target, projectileSpeed, damage, _turret.OnTargetHit);
+
     }
 
     bool InFOV()
     {
-        Vector3 targetDir = (_target.transform.position - transform.position).normalized;
+        Vector3 targetDir = (target.transform.position - transform.position).normalized;
         float targetAngle = Vector3.Angle(targetDir, transform.right);
 
         if (targetAngle <= fov / 2 && targetAngle >= 0)
@@ -120,7 +107,7 @@ public class Turret : MonoBehaviour, IPlaceable
 
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
-        if(_target) Debug.DrawLine(shootPos.position, _target.transform.position, Color.red);
+        if(target) Debug.DrawLine(shootPos.position, target.transform.position, Color.red);
     }
 
     void IPlaceable.Place(Vector3 pos)

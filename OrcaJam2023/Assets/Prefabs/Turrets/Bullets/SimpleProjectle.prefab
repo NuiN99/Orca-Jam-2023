@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6662685541418036182}
-  - component: {fileID: -8116587069111467709}
+  - component: {fileID: 9119556031474586724}
   - component: {fileID: 2725361231637619022}
   m_Layer: 0
-  m_Name: SniperBullet
+  m_Name: SimpleProjectle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8116587069111467709
+--- !u!114 &9119556031474586724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2711804417230833395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3725f33eb6dd27449e03db4293409b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ebb49027b889cd4fadc07c11843f5a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &2725361231637619022
