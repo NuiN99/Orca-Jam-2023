@@ -29,7 +29,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] BasicEnemy[] fast;
 
     
-    public static event Action OnCompletedWave;
+    public static event Action<int> OnCompletedWave;
 
     int EnemiesPerWave => currentLevel * currentWave + Random.Range(3, 8);
     float TimeBetweenEnemies => Random.Range(1, 3) * (1f / (currentLevel * currentWave));
@@ -64,6 +64,8 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(breakTime);
             }
         }
+
+        OnCompletedWave?.Invoke(currentWave);
     }
 
     BasicEnemy GetEnemy()

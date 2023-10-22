@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3c229294a745e4da99ca4e7f4fd744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: {fileID: 0}
   health: {fileID: 0}
 --- !u!114 &2682506899407916613
 MonoBehaviour:
@@ -76,11 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5027130af887744ba5e2113825a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: {fileID: 0}
-  moveSpeed: 250
-  pointDistThreshold: 1
-  animateAngle: 5
+  moveSpeed: 450
   animateScale: 0.1
+  minChangeDirInterval: 0.25
+  maxChangeDirInterval: 1.5
+  maxAngleChange: 30
 --- !u!50 &3927040542776429181
 Rigidbody2D:
   serializedVersion: 4
@@ -97,7 +96,7 @@ Rigidbody2D:
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 577cd3562a149554cb99fdb65865c61b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -137,7 +136,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
