@@ -34,6 +34,7 @@ public class Deck : MonoBehaviour
         GameObject newCard = Instantiate(cardPrefab, handGameObject.transform,false);
         //Write data to card;
         Card cardComponent = newCard.GetComponent<Card>();
+        cardComponent.startYPos = handGameObject.transform.position.y;
         cardComponent.CardData = cardDataArray[index];
         cardComponent.RenderData();
 

@@ -15,7 +15,9 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
    [SerializeField] TMP_Text description;
    [SerializeField] Coroutine runningCoroutine;
 
-    public void RenderData()
+   public float startYPos;
+
+   public void RenderData()
     {
         if (CardData != null)
         {
@@ -37,20 +39,19 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         else
         {
             print("Not Enough Gold");
-            MoveDown();
+            StartCoroutine(MoveDown(0.1f));
         }
           
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (transform.localPosition.y == -75)//if it hasn't moved 
-            runningCoroutine = StartCoroutine("MoveUp",0.1f);
+        runningCoroutine = StartCoroutine(MoveUp(0.1f));
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        MoveDown();
+        StartCoroutine(MoveDown(0.1f));
     }
 
 
@@ -61,23 +62,29 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     IEnumerator MoveUp(float LerpTime)
     {
         float time = 0;
-        Vector3 startPosition = transform.position;
-        Vector3 finalPosition = startPosition + transform.up * 75;
+        Vector3 startPos = new Vector3(transform.position.x, startYPos);
+        Vector3 finalPosition = startPos + transform.up * 75;
 
         while (time / LerpTime <= 1) {
             time += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPosition, finalPosition, time / LerpTime);
+            transform.position = Vector3.Lerp(startPos, finalPosition, time / LerpTime);
             yield return null;
         }
 
     }
 
-    void MoveDown()
+    IEnumerator MoveDown(float LerpTime)
     {
-        if (transform.localPosition.y > -75)
+        StopCoroutine(runningCoroutine);
+        float time = 0;
+        Vector3 startPos = new Vector3(transform.position.x, startYPos);
+        Vector3 finalPosition = startPos - transform.up * 75;
+
+        while (time / LerpTime <= 1)
         {
-            StopCoroutine(runningCoroutine);
-            transform.localPosition = new Vector3(transform.localPosition.x, -75, transform.localPosition.z);
+            time += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, finalPosition, time / LerpTime);
+            yield return null;
         }
     }
 
