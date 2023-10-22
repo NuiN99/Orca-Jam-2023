@@ -64,6 +64,18 @@ public class Deck : MonoBehaviour
             DrawCard();
     }
 
+    public void PayDraw()
+    {
+       if(GameManager.instance.gold >= 50)
+        {
+            DrawCard();
+            GameManager.instance.gold -= 50;
+            PlayerUI.instance.UpdateGold();
+        }
+        
+    }
+
+
     public void DrawReward()
     {
         //destroy last rewards
