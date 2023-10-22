@@ -42,7 +42,7 @@ public class Turret : MonoBehaviour, IPlaceable
         if (!detect) return;
 
         DetectTarget();
-        //if (_target) RotateToTarget();
+        if (target) RotateToTarget();
 
         _curInterval -= Time.deltaTime;
         if (!(_curInterval <= 0) || target == null) return;
@@ -74,10 +74,8 @@ public class Turret : MonoBehaviour, IPlaceable
 
     void RotateToTarget()
     {
-        Vector3 targetDir = target.transform.position - transform.position;
-        float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        float dir = Mathf.Sign(target.transform.position.x - transform.position.x);
+        transform.localScale = new Vector3(dir, 1, 1);
     }
 
     public virtual void Shoot()
