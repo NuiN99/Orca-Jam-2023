@@ -43,12 +43,20 @@ public class BuildingPlacement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameManager.instance.gold -= selectedCard.CardData.cost;
-            PlayerUI.instance.UpdateGold();
-            currentPlaceable.GetComponent<IPlaceable>().Place(currentPlaceable.transform.position);
-            currentPlaceable = null;
-            Destroy(selectedCard.gameObject);
-            selectedCard = null;
+            if (currentPlaceable.GetComponent<Turret>().placeable)
+            {
+                GameManager.instance.gold -= selectedCard.CardData.cost;
+                PlayerUI.instance.UpdateGold();
+                currentPlaceable.GetComponent<IPlaceable>().Place(currentPlaceable.transform.position);
+                currentPlaceable = null;
+                Destroy(selectedCard.gameObject);
+                selectedCard = null;
+            }
+            else
+            {
+                print("Can't Build There");
+            }
+            
         }
 
         if (Input.GetMouseButtonDown(1))

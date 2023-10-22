@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
 {
     public TMP_Text playerGoldText;
     public TMP_Text waveText;
+    public GameObject rewardPanel;
 
     public static PlayerUI instance;
 

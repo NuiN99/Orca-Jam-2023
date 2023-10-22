@@ -9,13 +9,12 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
    public CardData CardData { get; set; }
+   public bool Reward { get; set; }
    [SerializeField] GameObject highlight;
    [SerializeField] TMP_Text cost;
    [SerializeField] TMP_Text cardName;
    [SerializeField] TMP_Text description;
    [SerializeField] Coroutine runningCoroutine;
-
-   //public float startYPos;
 
    public void RenderData()
     {
@@ -30,17 +29,26 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GameManager.instance.gold >= CardData.cost)
+        //if this is a reward
+        if (Reward)
         {
-            BuildingPlacement.instance.selectedCard = this;
-            BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
-            ToggleHighlight();
-        }   
+            
+        }
         else
         {
-            print("Not Enough Gold");
-            StartCoroutine(MoveDown(0.1f));
+            if (GameManager.instance.gold >= CardData.cost)
+            {
+                BuildingPlacement.instance.selectedCard = this;
+                BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
+                ToggleHighlight();
+            }
+            else
+            {
+                print("Not Enough Gold");
+                StartCoroutine(MoveDown(0.1f));
+            }
         }
+       
           
     }
 

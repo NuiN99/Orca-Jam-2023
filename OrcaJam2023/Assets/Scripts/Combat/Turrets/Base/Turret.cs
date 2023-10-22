@@ -29,6 +29,14 @@ public class Turret : MonoBehaviour, IPlaceable
 
     public Action onHit;
 
+    public bool placeable;
+
+    void Start() { 
+    
+        placeable = true;
+    }
+
+
     void Update()
     {
         if (!detect) return;
@@ -113,12 +121,28 @@ public class Turret : MonoBehaviour, IPlaceable
         if(target) Debug.DrawLine(shootPos.position, target.transform.position, Color.red);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("Enter Trigger");
+        if(placeable && collision.gameObject.TryGetComponent(out Turret turret))
+        {
+            placeable = !placeable;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        print("Exit Trigger");
+        if (!placeable)
+        {
+            placeable = !placeable;
+        }
+    }
+
     void IPlaceable.Place(Vector3 pos)
     {   
         enabled = true;
         transform.position = pos;
     }
-
-    
 
 }

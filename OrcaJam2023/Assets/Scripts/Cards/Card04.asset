@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Card04
   m_EditorClassIdentifier: 
   ID: 0
-  cost: 200
-  cardName: 4th Card
-  description: This is the 4th card
-  turret: {fileID: 5787913721777656044, guid: 2dd28fae37e3a184d859a7e0adfee52a, type: 3}
+  rarity: 0
+  cost: 150
+  cardName: Priest
+  description: Bring forth the holy hand grenade
+  turret: {fileID: 6871366569138413065, guid: dc595d5b221caac4c9dcb85644edb215, type: 3}
