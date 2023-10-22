@@ -19,7 +19,7 @@ public class Deck : MonoBehaviour
         //Subscribe to events
         GameManager.drawCard += DrawCard;
         GameManager.startGame += DrawHand;
-        GameManager.startGame += DrawReward;
+        WaveManager.OnCompletedWave += DrawReward;
     }
 
     private void OnDisable()
@@ -27,7 +27,7 @@ public class Deck : MonoBehaviour
         //Subscribe to events
         GameManager.drawCard -= DrawCard;
         GameManager.startGame -= DrawHand;
-        GameManager.startGame -= DrawReward;
+        WaveManager.OnCompletedWave += DrawReward;
     }
 
     public void DrawCard()
@@ -38,6 +38,7 @@ public class Deck : MonoBehaviour
         GameObject newCard = Instantiate(cardPrefab, handGameObject.transform,false);
         //Write data to card;
         Card cardComponent = newCard.GetComponent<Card>();
+        cardComponent.Reward = false;
         cardComponent.CardData = cardDataArray[index];
         cardComponent.RenderData();
 
@@ -51,6 +52,7 @@ public class Deck : MonoBehaviour
         GameObject newCard = Instantiate(cardPrefab, rewardGameObject.transform, false);
         //Write data to card;
         Card cardComponent = newCard.GetComponent<Card>();
+        cardComponent.Reward = true;
         cardComponent.CardData = cardDataArray[index];
         cardComponent.RenderData();
 
@@ -64,6 +66,9 @@ public class Deck : MonoBehaviour
 
     public void DrawReward()
     {
+        //destroy last rewards
+
+        //draw more rewards
         for (int i = 0; i < rewardSize; i++)
             DrawcardReward();
     }

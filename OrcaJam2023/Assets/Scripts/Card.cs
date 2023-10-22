@@ -16,7 +16,10 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
    [SerializeField] TMP_Text description;
    [SerializeField] Coroutine runningCoroutine;
 
-   public void RenderData()
+
+    public static event Action OnPickedReward;
+
+    public void RenderData()
     {
         if (CardData != null)
         {
@@ -31,8 +34,9 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         //if this is a reward
         if (Reward)
-        {
-            
+        {   
+            transform.SetParent(PlayerUI.instance.handGameObject.transform, false);
+            Reward = false;
         }
         else
         {

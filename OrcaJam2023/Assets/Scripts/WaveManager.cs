@@ -11,7 +11,7 @@ public class WaveManager : MonoBehaviour
     public int currentLevel = 1;
     public int currentWave = 1;
     public int currentEnemyCount = 0;
-    public WaveManager instance;
+    public static WaveManager instance;
 
     [SerializeField] BoxCollider2D spawnCollider;
     Bounds SpawnBounds => spawnCollider.bounds;
@@ -32,7 +32,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] BasicEnemy[] fast;
 
     
-    public static event Action<int> OnCompletedWave;
+    public static event Action OnCompletedWave;
 
     int EnemiesPerWave => currentLevel * currentWave + Random.Range(3, 8);
     float TimeBetweenEnemies => Random.Range(1, 3) * (1f / (currentLevel * currentWave));
@@ -106,7 +106,7 @@ public class WaveManager : MonoBehaviour
             > 10 => 3,
         };
 
-        OnCompletedWave?.Invoke(currentWave);
+        OnCompletedWave?.Invoke();
        
         yield return new WaitForSeconds(5);
 
