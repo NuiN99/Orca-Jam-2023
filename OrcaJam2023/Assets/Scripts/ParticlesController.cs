@@ -8,6 +8,9 @@ public class ParticlesController : MonoBehaviour
     [SerializeField] GameObject blackExplosion;
     [SerializeField] GameObject whiteExplosion;
 
+    [SerializeField] GameObject fireEffect;
+    [SerializeField] GameObject iceEffect;
+
     public static ParticlesController instance;
 
     void Awake()
@@ -28,5 +31,17 @@ public class ParticlesController : MonoBehaviour
     {
         GameObject effect = Instantiate(whiteExplosion, pos, Quaternion.identity);
         Destroy(effect, .5f);
+    }
+
+    public void SpawnFire(Transform target)
+    {
+        GameObject effect = Instantiate(fireEffect, target.position, Quaternion.identity, target);
+        Destroy(effect, 3f);
+    }
+
+    public void SpawnIce(Transform target)
+    {
+        GameObject effect = Instantiate(iceEffect, target.position, Quaternion.identity, target);
+        Destroy(effect, 3f);
     }
 }

@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
+    float maxMoveSpeed;
+    [SerializeField] public float moveSpeed;
 
     Rigidbody2D _rb;
 
@@ -27,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
+        maxMoveSpeed = moveSpeed;
         Animate();
         StartCoroutine(UpdateDirection());
     }
@@ -56,5 +58,17 @@ public class EnemyMovement : MonoBehaviour
 
         yield return new WaitForSeconds(Random.Range(minChangeDirInterval, maxChangeDirInterval));
         StartCoroutine(UpdateDirection());
+    }
+
+    public void SlowEnemy(float percentAmount)
+    {
+        StartCoroutine(Slow(percentAmount));
+    }
+
+    IEnumerator Slow(float percentAmount)
+    {
+        moveSpeed *= 1 - percentAmount;
+        yield return new WaitForSeconds(1);
+        moveSpeed = maxMoveSpeed;
     }
 }
