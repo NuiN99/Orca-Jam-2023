@@ -9,6 +9,7 @@ public class PlayerUI : MonoBehaviour
     public TMP_Text playerGoldText;
     public TMP_Text waveText;
     public GameObject rewardPanel;
+    public GameObject handGameObject;
 
     public static PlayerUI instance;
 
@@ -26,15 +27,19 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager.startGame += UpdateGold;
-        GameManager.startGame +=  ShowWaveTextStart;
-        WaveManager.OnCompletedWave += ShowWaveText;
+        GameManager.startGame += ShowWaveText;
+        WaveManager.OnCompletedWave += OpenRewardPanel;
+        Card.OnPickedReward += CloseRewardPanel;
+        Card.OnPickedReward += ShowWaveText;
     }
 
     private void OnDisable()
     {
         GameManager.startGame -= UpdateGold;
-        GameManager.startGame -= ShowWaveTextStart;
-        WaveManager.OnCompletedWave -= ShowWaveText;
+        GameManager.startGame -= ShowWaveText;
+        WaveManager.OnCompletedWave -= OpenRewardPanel;
+        Card.OnPickedReward -= CloseRewardPanel;
+        Card.OnPickedReward -= ShowWaveText;
     }
 
 
@@ -49,24 +54,28 @@ public class PlayerUI : MonoBehaviour
         playerGoldText.text = GameManager.instance.gold.ToString();
     }
 
-    public void ShowWaveTextStart()
+
+    public void ShowWaveText()
     {
-        StartCoroutine(ShowWave(1));
+        StartCoroutine(ShowWave());
     }
 
-
-    public void ShowWaveText(int w = 1)
-    {
-        StartCoroutine(ShowWave(w));
-    }
-
-    public IEnumerator ShowWave(int wave)
+    public IEnumerator ShowWave()
     {
         waveText.enabled = true;
-        waveText.text = "Wave " + wave;
+        waveText.text = "Wave " + WaveManager.instance.currentWave;
         yield return new WaitForSeconds(2.5f);
 
         waveText.enabled = false;
     }
 
+
+    public void OpenRewardPanel()
+    {
+        //rewardPanel();
+    }
+    public void CloseRewardPanel()
+    {
+
+    }
 }

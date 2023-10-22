@@ -810,7 +810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1048416196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1288,6 +1288,7 @@ MonoBehaviour:
   playerGoldText: {fileID: 1353155681}
   waveText: {fileID: 2073855732}
   rewardPanel: {fileID: 1048416195}
+  handGameObject: {fileID: 650653742}
 --- !u!114 &1343677253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1589,7 +1590,6 @@ MonoBehaviour:
   currentLevel: 1
   currentWave: 100
   currentEnemyCount: 0
-  instance: {fileID: 0}
   spawnCollider: {fileID: 1410098391}
   general:
   - {fileID: 1228644029253308065, guid: bf914a3eca9359d44ac49c7ff7e67afd, type: 3}
