@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -25,6 +26,9 @@ public class Projectile : MonoBehaviour
 
         Vector3 targetDir = (target.transform.position - transform.position).normalized;
         transform.position += targetDir * (speed * Time.deltaTime);
+
+        float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (Vector2.Distance(transform.position, target.transform.position) <= 0.25f)
         {

@@ -56,7 +56,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 64
-  projectilePrefab: {fileID: 9119556031474586724, guid: d8b2511a3b33933498e92fd9f02c9eb9, type: 3}
+  projectilePrefab: {fileID: 9119556031474586724, guid: 7c21e975cf1124a46b6bee0392ef06fc, type: 3}
   shootPos: {fileID: 8116835014639456154}
   placeable: 0
 --- !u!212 &4783862153336034930
