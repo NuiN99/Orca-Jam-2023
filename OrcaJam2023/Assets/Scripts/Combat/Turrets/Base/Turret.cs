@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour, IPlaceable
 {
-    protected Health target;
+    public Health target;
 
     protected bool detect = true;
     
@@ -139,6 +139,23 @@ public class Turret : MonoBehaviour, IPlaceable
     {   
         enabled = true;
         transform.position = pos;
+    }
+
+    public void UpgradeDamage(int amount)
+    {
+        damage += amount;
+    }
+
+    public void UpgradeFirerate(float percent)
+    {
+        float mult = 1 - (percent / 100);
+        atkInterval -= atkInterval * mult;
+    }
+
+    public void UpgradeRange(float percent)
+    {
+        float mult = 1 - (percent / 100);
+        detectionRadius += detectionRadius * mult;
     }
 
 }

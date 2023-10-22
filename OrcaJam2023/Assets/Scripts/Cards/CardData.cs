@@ -11,5 +11,5 @@ public class CardData : ScriptableObject
     public string cardName;
     public string description;
     public GameObject turret;
-
+    public Upgrade.UpgradeType upgradeType;
 }

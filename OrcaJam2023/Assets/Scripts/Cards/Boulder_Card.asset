@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 929df8f47108bd94fb17c7289561991a, type: 3}
-  m_Name: Card04
+  m_Name: Boulder_Card
   m_EditorClassIdentifier: 
   ID: 0
   rarity: 0
-  cost: 150
-  cardName: Priest
-  description: Bring forth the holy hand grenade
-  turret: {fileID: 6871366569138413065, guid: dc595d5b221caac4c9dcb85644edb215, type: 3}
+  cost: 100
+  cardName: Buff Boulder Man
+  description: Roller man ball rolling on the ground ball man
+  turret: {fileID: 6871366569138413065, guid: 370716152aefdec4087d181721fdd5b5, type: 3}
+  turretUpgrade: {fileID: 0}
+  upgradesTurret: 0
