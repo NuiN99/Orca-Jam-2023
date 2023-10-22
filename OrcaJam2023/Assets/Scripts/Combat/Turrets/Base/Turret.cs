@@ -7,14 +7,15 @@ public class Turret : MonoBehaviour, IPlaceable
 {
     protected Health target;
 
+    protected bool detect = true;
     
     [SerializeField] protected int damage = 1;
-    [SerializeField] float atkInterval = 0.25f;
+    [SerializeField] protected float atkInterval = 0.25f;
     [SerializeField] protected float projectileSpeed = 1f;
 
     [SerializeField] float rotationSpeed = 5f;
 
-    [SerializeField] float detectionRadius = 2.5f;
+    [SerializeField] protected float detectionRadius = 2.5f;
     [SerializeField] float fov = 30f;
     [SerializeField] protected LayerMask targetMask;
 
@@ -30,6 +31,8 @@ public class Turret : MonoBehaviour, IPlaceable
 
     void Update()
     {
+        if (!detect) return;
+
         DetectTarget();
         //if (_target) RotateToTarget();
 

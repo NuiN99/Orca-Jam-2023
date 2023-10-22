@@ -7,9 +7,6 @@ public class SplashTurret : Turret
 {
     [SerializeField] float splashRadius = 1.5f;
 
-    [SerializeField] GameObject explosionEffectBlack;
-    [SerializeField] GameObject explosionEffectWhite;
-
     void Awake()
     {
         onHit += SplashDamage;
@@ -32,9 +29,6 @@ public class SplashTurret : Turret
             enemy.health.TakeDamage(damage);
         }
 
-        GameObject effect1 = Instantiate(explosionEffectBlack, target.transform.position, Quaternion.identity);
-        GameObject effect2 = Instantiate(explosionEffectWhite, target.transform.position, Quaternion.identity);
-        Destroy(effect1, 2f);
-        Destroy(effect2, 2f);
+        ParticlesController.instance.SpawnExplosion(target.transform.position);
     }
 }

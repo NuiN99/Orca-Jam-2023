@@ -41,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6871366569138413065}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5978f1554917b854da2e6f2ea9504cf9, type: 3}
   m_Name: 
@@ -58,8 +58,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 9119556031474586724, guid: d8b2511a3b33933498e92fd9f02c9eb9, type: 3}
   shootPos: {fileID: 5564390531337287880}
   splashRadius: 2
-  explosionEffectBlack: {fileID: 412267046687703337, guid: 681541062bcf35446abe948d0fa77eb3, type: 3}
-  explosionEffectWhite: {fileID: 412267046687703337, guid: 69dd01394703f7646b79e3579577231d, type: 3}
 --- !u!212 &4723280705578791278
 SpriteRenderer:
   m_ObjectHideFlags: 0
