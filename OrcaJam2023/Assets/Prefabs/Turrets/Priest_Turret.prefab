@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 822279262668585494}
   - component: {fileID: -5190145243412766437}
   - component: {fileID: 4723280705578791278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Priest_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02d1bb0e5da4694c8e230e888ecd9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   damage: 5
   atkInterval: 1
   projectileSpeed: 0
@@ -119,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5564390531337287880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

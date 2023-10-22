@@ -27,6 +27,7 @@ public class SplashTurret : Turret
         {
             if (!hit.collider.TryGetComponent(out BasicEnemy enemy)) continue;
             enemy.health.TakeDamage(damage);
+            onHit?.Invoke();
         }
 
         ParticlesController.instance.SpawnExplosion(target.transform.position);

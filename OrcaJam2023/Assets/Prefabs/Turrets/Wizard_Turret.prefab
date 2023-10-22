@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4723280705578791278}
   - component: {fileID: 3386528308512366401}
   - component: {fileID: 7797798381235381415}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wizard_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5978f1554917b854da2e6f2ea9504cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   damage: 25
   atkInterval: 2.5
   projectileSpeed: 10
@@ -183,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5564390531337287880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

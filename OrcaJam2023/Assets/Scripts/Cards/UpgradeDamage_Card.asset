@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 0
   rarity: 0
   cost: 30
-  cardName: Sniper
+  cardName: Damage Upgrade
   description: 'This one also shoots! '
   turret: {fileID: 6871366569138413065, guid: 9302e963dd3502748837d552b187fd9f, type: 3}
   upgradeType: 3

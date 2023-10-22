@@ -17,10 +17,8 @@ public class Upgrade
         AddRange,
     }
 
-    public void UpgradeTurret(UpgradeType upgradeType, Turret turret)
+    public static void UpgradeTurret(UpgradeType upgradeType, Turret turret)
     {
-        Health health = turret.target;
-        BasicEnemy enemy = health.GetComponent<BasicEnemy>();
         switch (upgradeType)
         {
             case UpgradeType.None:
@@ -29,7 +27,9 @@ public class Upgrade
             case UpgradeType.FireTipped:
                 turret.onHit += () =>
                 {
+                    Health health = turret.target;
                     if (health == null) return;
+                    BasicEnemy enemy = health.GetComponent<BasicEnemy>();
                     FireEffect fireEffect = new(enemy, 2f);
                     enemy.AddEffect(fireEffect);
                 };
@@ -38,7 +38,9 @@ public class Upgrade
             case UpgradeType.IceTipped:
                 turret.onHit += () =>
                 {
+                    Health health = turret.target;
                     if (health == null) return;
+                    BasicEnemy enemy = health.GetComponent<BasicEnemy>();
                     IceEffect iceEffect = new(enemy, 2f);
                     enemy.AddEffect(iceEffect);
                 };

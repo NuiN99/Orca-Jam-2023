@@ -28,6 +28,7 @@ public class BoulderProjectile : Projectile
 
                 damagedEnemies.Add(enemy.health);
                 enemy.health.TakeDamage(damage);
+                onHit?.Invoke();
             }
         }
 

@@ -42,8 +42,20 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         {
             if (GameManager.instance.gold >= CardData.cost)
             {
-                BuildingPlacement.instance.selectedCard = this;
-                BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
+                CardPlacement.instance.selectedCard = this;
+
+                if (CardData.upgradeType == Upgrade.UpgradeType.None)
+                {
+                    CardPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
+                }
+                else
+                {
+                    
+                }
+                
+
+
+                
                 ToggleHighlight();
             }
             else

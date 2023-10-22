@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4783862153336034930}
   - component: {fileID: 6040360744121221277}
   - component: {fileID: 8063673249824640521}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ballista_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0616215a50822234ea75f1229980678f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   damage: 10
   atkInterval: 0.25
   projectileSpeed: 20
@@ -182,7 +183,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8116835014639456154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

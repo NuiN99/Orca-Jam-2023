@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b133ad147675ca04dbd4aa9e1223be66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 30
+  gold: 1000
 --- !u!4 &177577360
 Transform:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 864140504}
   - component: {fileID: 864140503}
   m_Layer: 0
-  m_Name: BuildingPlacement
+  m_Name: CardPlacement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,6 +580,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlaceable: {fileID: 0}
   selectedCard: {fileID: 0}
+  turretMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &864140504
 Transform:
   m_ObjectHideFlags: 0
@@ -2301,6 +2304,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d4befeb705484d94e9777f4831be896e, type: 2}
   - {fileID: 11400000, guid: 1d8e1ecc113dfc44d909c68b3ecf5dc9, type: 2}
   - {fileID: 11400000, guid: 4014752b7f5f0f74183256e6139d8b97, type: 2}
+  - {fileID: 11400000, guid: 1f086701526764346901e5fb4afd36a4, type: 2}
+  - {fileID: 11400000, guid: c7ded12922da0554da9565e578f132cc, type: 2}
+  - {fileID: 11400000, guid: 7734bb97ff03f774c8718be67189ae3e, type: 2}
+  - {fileID: 11400000, guid: 0f5ed2c4f8b015348b836b29f11d90fa, type: 2}
+  - {fileID: 11400000, guid: ab740620db24a1b4abdef193ff16e9d8, type: 2}
+  - {fileID: 11400000, guid: 7c48c6b39d055864c8108e3a3090bab0, type: 2}
   cardPrefab: {fileID: 3153967598749443062, guid: cbca06b4142af1441b4d516260068e78, type: 3}
   handGameObject: {fileID: 650653742}
   rewardGameObject: {fileID: 1280854761}
