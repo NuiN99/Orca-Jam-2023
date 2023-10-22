@@ -25,8 +25,15 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         EnemyManager.instance.RemoveEnemy(this);
 
-        OnDeath?.Invoke();
-        OnDeathGold?.Invoke(gold);
+        if(health._health <= 0)
+        {
+            OnDeathGold?.Invoke(gold);
+            OnDeath?.Invoke();
+        }
+        else
+        {
+            OnDeath?.Invoke();
+        }
 
         Destroy(gameObject);
     }

@@ -112,6 +112,10 @@ public class Turret : MonoBehaviour, IPlaceable
 
     void IPlaceable.Place(Vector3 pos)
     {   
+        enabled = true;
         transform.position = pos;
     }
+
+    
+
 }

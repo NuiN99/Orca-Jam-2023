@@ -14,4 +14,13 @@ public class Village : MonoBehaviour
         if(instance != null && instance != this) Destroy(gameObject);
         else instance = this;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IDamageable enemy))
+        {
+            enemy.Die();
+            health -= 1;
+        }
+    }
 }

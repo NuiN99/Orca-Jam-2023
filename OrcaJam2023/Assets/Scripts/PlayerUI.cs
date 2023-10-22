@@ -25,14 +25,14 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager.startGame += UpdateGold;
-        BasicEnemy.OnDeath += UpdateGold;
+        GameManager.startGame +=  ShowWaveTextStart;
         WaveManager.OnCompletedWave += ShowWaveText;
     }
 
     private void OnDisable()
     {
         GameManager.startGame -= UpdateGold;
-        BasicEnemy.OnDeath -= UpdateGold;
+        GameManager.startGame -= ShowWaveTextStart;
         WaveManager.OnCompletedWave -= ShowWaveText;
     }
 
@@ -48,10 +48,15 @@ public class PlayerUI : MonoBehaviour
         playerGoldText.text = GameManager.instance.gold.ToString();
     }
 
-
-    public void ShowWaveText(int w)
+    public void ShowWaveTextStart()
     {
-        StartCoroutine("ShowWave",w);
+        StartCoroutine(ShowWave(1));
+    }
+
+
+    public void ShowWaveText(int w = 1)
+    {
+        StartCoroutine(ShowWave(w));
     }
 
     public IEnumerator ShowWave(int wave)

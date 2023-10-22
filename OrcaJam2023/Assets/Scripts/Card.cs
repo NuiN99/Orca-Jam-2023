@@ -28,12 +28,12 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GameManager.instance.gold - CardData.cost >= 0)
+        if (GameManager.instance.gold >= CardData.cost)
         {
             BuildingPlacement.instance.selectedCard = this;
             BuildingPlacement.instance.currentPlaceable = Instantiate(CardData.turret);
             ToggleHighlight();
-        }
+        }   
         else
         {
             print("Not Enough Gold");

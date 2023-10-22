@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Card03
   m_EditorClassIdentifier: 
   ID: 0
+  rarity: 0
   cost: 50
-  cardName: 3rd card
-  description: This is the 3rd card
-  turret: {fileID: 5787913721777656044, guid: 2dd28fae37e3a184d859a7e0adfee52a, type: 3}
+  cardName: Wizzard
+  description: I cast "Burn everything in that general direction"
+  turret: {fileID: 6871366569138413065, guid: 722ad9f1d4682ef45bfb93b9efd28d70, type: 3}
