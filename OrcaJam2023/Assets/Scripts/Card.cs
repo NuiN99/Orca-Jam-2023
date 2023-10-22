@@ -15,7 +15,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
    [SerializeField] TMP_Text description;
    [SerializeField] Coroutine runningCoroutine;
 
-   public float startYPos;
+   //public float startYPos;
 
    public void RenderData()
     {
@@ -62,7 +62,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     IEnumerator MoveUp(float LerpTime)
     {
         float time = 0;
-        Vector3 startPos = new Vector3(transform.position.x, startYPos);
+        Vector3 startPos = new Vector3(transform.position.x, transform.position.y);
         Vector3 finalPosition = startPos + transform.up * 75;
 
         while (time / LerpTime <= 1) {
@@ -77,8 +77,8 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         StopCoroutine(runningCoroutine);
         float time = 0;
-        Vector3 startPos = new Vector3(transform.position.x, startYPos);
-        Vector3 finalPosition = startPos - transform.up * 75;
+        Vector3 startPos = new Vector3(transform.position.x, transform.position.y);
+        Vector3 finalPosition = new Vector3(transform.position.x, transform.parent.position.y);
 
         while (time / LerpTime <= 1)
         {
