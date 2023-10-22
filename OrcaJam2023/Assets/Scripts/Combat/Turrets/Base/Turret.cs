@@ -13,8 +13,6 @@ public class Turret : MonoBehaviour, IPlaceable
     [SerializeField] protected float atkInterval = 0.25f;
     [SerializeField] protected float projectileSpeed = 1f;
 
-    [SerializeField] float rotationSpeed = 5f;
-
     [SerializeField] protected float detectionRadius = 2.5f;
     [SerializeField] float fov = 30f;
     [SerializeField] protected LayerMask targetMask;
