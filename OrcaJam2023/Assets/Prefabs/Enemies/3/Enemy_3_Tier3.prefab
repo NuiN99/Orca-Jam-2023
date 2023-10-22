@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  gold: 4
 --- !u!114 &2682506899407916613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f98d0fbd5c40a45acb5dc79b6f7065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 200
 --- !u!114 &532427833870364480
 MonoBehaviour:
   m_ObjectHideFlags: 0
