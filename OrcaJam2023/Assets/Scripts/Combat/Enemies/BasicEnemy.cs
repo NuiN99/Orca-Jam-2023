@@ -55,7 +55,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         for (int i = 0; i < curEffects.Count; i++)
         {
             var effect = curEffects[i];
-            if (!effect.UpdateEffect())
+            if (!effect.UpdateEffect(0.5f))
             {
                 curEffects.RemoveAt(i);
             }
@@ -65,7 +65,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     IEnumerator UpdateEffectsRepeating()
     {
         UpdateEffects();
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(UpdateEffectsRepeating());
     }
 }

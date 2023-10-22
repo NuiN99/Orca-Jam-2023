@@ -9,28 +9,29 @@ public class DOTTurret : Turret
     void Start()
     {
         detect = false;
-        StartCoroutine(DamageOverTime());
+        StartCoroutine(ApplyBurnToEnemiesInRangeOverTime());
     }
 
-    void DamageEnemiesInRange()
+    void ApplyBurnToEnemiesInRange()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, detectionRadius, Vector2.zero, 0, targetMask);
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider.TryGetComponent(out Health health))
+            if (hit.collider.TryGetComponent(out BasicEnemy enemy))
             {
-                health.TakeDamage(damage);
+                FireEffect effect = new(enemy, 3f);
+                enemy.AddEffect(effect);
             }
         }
 
-        ParticlesController.instance.SpawnWhiteExplosion(transform.position);
+        ParticlesController.instance.SpawnPriestExplosion(transform.position);
     }
 
-    IEnumerator DamageOverTime()
+    IEnumerator ApplyBurnToEnemiesInRangeOverTime()
     {
-        DamageEnemiesInRange();
+        ApplyBurnToEnemiesInRange();
         yield return new WaitForSeconds(atkInterval);
-        StartCoroutine(DamageOverTime());
+        StartCoroutine(ApplyBurnToEnemiesInRangeOverTime());
     }
 }

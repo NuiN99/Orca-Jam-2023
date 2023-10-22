@@ -14,10 +14,11 @@ public class Effect
         this.target = target;
     }
 
-    public bool UpdateEffect()
+    public bool UpdateEffect(float interval)
     {
         if (target == null) return false;
-        curTime += Time.deltaTime;
+        curTime += interval;
+        Debug.Log(curTime);
         DealEffect();
         return !(curTime >= duration);
     }

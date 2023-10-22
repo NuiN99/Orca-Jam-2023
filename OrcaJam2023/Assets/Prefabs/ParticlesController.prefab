@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackExplosion: {fileID: 412267046687703337, guid: 681541062bcf35446abe948d0fa77eb3, type: 3}
   whiteExplosion: {fileID: 412267046687703337, guid: 69dd01394703f7646b79e3579577231d, type: 3}
+  fireEffect: {fileID: 412267046687703337, guid: d7b1ce6e063381549bac1094ed5d5a97, type: 3}
+  iceEffect: {fileID: 0}

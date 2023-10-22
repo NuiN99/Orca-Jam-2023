@@ -12,7 +12,7 @@ public class FireEffect : Effect
 
     public override void DealEffect()
     {
-        target.health.TakeDamage(5);
+        target.health.TakeDamage(1);
         ParticlesController.instance.SpawnFire(target.transform);
     }
 }
