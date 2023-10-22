@@ -8,7 +8,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     public Health health;
     public int gold;
 
-    public static event Action<int> OnDeath;
+    public static event Action<int> OnDeathGold;
+    public static event Action OnDeath;
 
     void Awake()
     {
@@ -24,7 +25,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
     {
         EnemyManager.instance.RemoveEnemy(this);
 
-        OnDeath?.Invoke(gold);
+        OnDeathGold?.Invoke(gold);
 
         Destroy(gameObject);
     }

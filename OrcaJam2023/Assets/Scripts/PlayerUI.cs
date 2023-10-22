@@ -25,14 +25,14 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager.startGame += UpdateGold;
-        BasicEnemy.OnDeath += (_) => UpdateGold();
+        BasicEnemy.OnDeath += UpdateGold;
         WaveManager.OnCompletedWave += ShowWaveText;
     }
 
     private void OnDisable()
     {
         GameManager.startGame -= UpdateGold;
-        BasicEnemy.OnDeath -= (_) => UpdateGold();
+        BasicEnemy.OnDeath -= UpdateGold;
         WaveManager.OnCompletedWave -= ShowWaveText;
     }
 

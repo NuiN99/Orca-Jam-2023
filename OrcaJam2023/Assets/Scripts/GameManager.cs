@@ -28,11 +28,11 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BasicEnemy.OnDeath += AddGold;   
+        BasicEnemy.OnDeathGold += AddGold;   
     }
     private void OnDisable()
     {
-        BasicEnemy.OnDeath -= AddGold;
+        BasicEnemy.OnDeathGold -= AddGold;
     }
 
     private void Start()

@@ -52,13 +52,13 @@ public class WaveManager : MonoBehaviour
     private void OnEnable()
     {
         GameManager.startGame += StartWave;
-        BasicEnemy.OnDeath += (_) => ReduceEnemyCount();
+        BasicEnemy.OnDeath += ReduceEnemyCount;
     }
 
     private void OnDisable()
     {
         GameManager.startGame -= StartWave;
-        BasicEnemy.OnDeath -= (_) => ReduceEnemyCount();
+        BasicEnemy.OnDeath -= ReduceEnemyCount;
     }
 
 
