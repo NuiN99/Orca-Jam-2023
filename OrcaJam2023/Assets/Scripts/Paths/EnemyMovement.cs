@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class EnemyMovement : MonoBehaviour
 {
     float maxMoveSpeed;
+    public bool Attacking { get; set; }
     [SerializeField] public float moveSpeed;
 
     Rigidbody2D _rb;
@@ -29,13 +30,18 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         maxMoveSpeed = moveSpeed;
+        Attacking = false;
         Animate();
         StartCoroutine(UpdateDirection());
     }
 
     void Update()
     {
-        Move();
+        if (!Attacking)
+        {
+            Move();
+        }
+        
     }
 
     void Move()
@@ -49,6 +55,13 @@ public class EnemyMovement : MonoBehaviour
         Spleen.ScaleY(transform, transform.localScale.y - animateScale, randSpeed, Ease.InOutQuad).SetLoop(Loop.Yoyo);
         Spleen.ScaleX(transform, transform.localScale.y + animateScale, randSpeed, Ease.InOutQuad).SetLoop(Loop.Yoyo);
     }
+
+    public void AttackAnimate()
+    {
+        float randSpeed = Random.Range(75f, 100f) / moveSpeed;
+        Spleen.AddPosX(transform, Random.Range(0.5f,1.5f), Random.Range(0.20f, 0.55f), Ease.InCubic).SetLoop(Loop.Rewind);
+    }
+
 
     IEnumerator UpdateDirection()
     {

@@ -11,6 +11,8 @@ public class WaveManager : MonoBehaviour
     public int currentLevel = 1;
     public int currentWave = 1;
     public int currentEnemyCount = 0;
+    bool nextWave;
+
     public static WaveManager instance;
 
     [SerializeField] BoxCollider2D spawnCollider;
@@ -53,12 +55,14 @@ public class WaveManager : MonoBehaviour
     {
         GameManager.startGame += StartWave;
         BasicEnemy.OnDeath += ReduceEnemyCount;
+        Card.OnPickedReward += ContinueCoroutine;
     }
 
     private void OnDisable()
     {
         GameManager.startGame -= StartWave;
         BasicEnemy.OnDeath -= ReduceEnemyCount;
+        Card.OnPickedReward -= ContinueCoroutine;
     }
 
 
@@ -66,6 +70,7 @@ public class WaveManager : MonoBehaviour
     [ContextMenu("Start Wave")]
     public void StartWave()
     {
+        nextWave = false;
         StartCoroutine(StartWave(EnemiesPerWave));
     }
 
@@ -108,7 +113,7 @@ public class WaveManager : MonoBehaviour
 
         OnCompletedWave?.Invoke();
        
-        yield return new WaitForSeconds(5);
+        yield return new WaitUntil(() => nextWave);
 
         StartWave();
     }
@@ -139,4 +144,10 @@ public class WaveManager : MonoBehaviour
     {
         currentEnemyCount--;
     }
+
+    void ContinueCoroutine()
+    {
+        nextWave = true;
+    }
+
 }

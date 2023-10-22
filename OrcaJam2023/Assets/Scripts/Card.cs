@@ -34,7 +34,8 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         //if this is a reward
         if (Reward)
-        {   
+        {
+            OnPickedReward?.Invoke();
             transform.SetParent(PlayerUI.instance.handGameObject.transform, false);
             Reward = false;
         }
