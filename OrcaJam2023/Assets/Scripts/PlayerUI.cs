@@ -72,10 +72,10 @@ public class PlayerUI : MonoBehaviour
 
     public void OpenRewardPanel()
     {
-        //rewardPanel();
+        rewardPanel.SetActive(true);
     }
     public void CloseRewardPanel()
     {
-
+        rewardPanel.SetActive(false);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BasicEnemy.OnDeathGold += AddGold;   
+        BasicEnemy.OnDeathGold += AddGold;
+        Village.OnPlayerDeath += Lose;
     }
     private void OnDisable()
     {
@@ -46,6 +48,11 @@ public class GameManager : MonoBehaviour
     {
         gold += amount;
         PlayerUI.instance.UpdateGold();
+    }
+
+    void Lose()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 

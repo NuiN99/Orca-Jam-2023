@@ -27,7 +27,7 @@ public class Deck : MonoBehaviour
         //Subscribe to events
         GameManager.drawCard -= DrawCard;
         GameManager.startGame -= DrawHand;
-        WaveManager.OnCompletedWave += DrawReward;
+        WaveManager.OnCompletedWave -= DrawReward;
     }
 
     public void DrawCard()
@@ -67,7 +67,10 @@ public class Deck : MonoBehaviour
     public void DrawReward()
     {
         //destroy last rewards
-
+        foreach(GameObject reward in rewardGameObject.transform)
+        {
+            Destroy(reward);
+        }
         //draw more rewards
         for (int i = 0; i < rewardSize; i++)
             DrawcardReward();
