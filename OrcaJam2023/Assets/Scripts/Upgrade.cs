@@ -25,22 +25,18 @@ public class Upgrade
                 return;
 
             case UpgradeType.FireTipped:
-                turret.onHit += () =>
+                turret.onHit += (enemy) =>
                 {
-                    Health health = turret.target;
-                    if (health == null) return;
-                    BasicEnemy enemy = health.GetComponent<BasicEnemy>();
+                    if (enemy == null) return;
                     FireEffect fireEffect = new(enemy, 2f);
                     enemy.AddEffect(fireEffect);
                 };
                 break;
             
             case UpgradeType.IceTipped:
-                turret.onHit += () =>
+                turret.onHit += (enemy) =>
                 {
-                    Health health = turret.target;
-                    if (health == null) return;
-                    BasicEnemy enemy = health.GetComponent<BasicEnemy>();
+                    if (enemy == null) return;
                     IceEffect iceEffect = new(enemy, 2f);
                     enemy.AddEffect(iceEffect);
                 };

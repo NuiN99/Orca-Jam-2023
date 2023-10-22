@@ -6,19 +6,19 @@ using UnityEngine;
 public class SplashTurret : Turret
 {
     [SerializeField] float splashRadius = 1.5f;
-
+    Action<BasicEnemy> onReachedEnemy;
     void Awake()
     {
-        onHit += SplashDamage;
+        onReachedEnemy += SplashDamage;
     }
 
     public override void Shoot()
     {
         Projectile projectile = Instantiate(projectilePrefab, shootPos.position, Quaternion.identity);
-        projectile.Init(target, projectileSpeed, damage, onHit);
+        projectile.Init(target, projectileSpeed, damage, onReachedEnemy);
     }
 
-    void SplashDamage()
+    void SplashDamage(BasicEnemy test)
     {
         if (target == null) return;
 
@@ -27,7 +27,7 @@ public class SplashTurret : Turret
         {
             if (!hit.collider.TryGetComponent(out BasicEnemy enemy)) continue;
             enemy.health.TakeDamage(damage);
-            onHit?.Invoke();
+            onHit?.Invoke(enemy);
         }
 
         ParticlesController.instance.SpawnExplosion(target.transform.position);

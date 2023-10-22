@@ -48,4 +48,4 @@ MonoBehaviour:
   whiteExplosion: {fileID: 412267046687703337, guid: 69dd01394703f7646b79e3579577231d, type: 3}
   priestExplosion: {fileID: 412267046687703337, guid: 6fc7b4fb208ad4442b0a1fd2cdd436a4, type: 3}
   fireEffect: {fileID: 412267046687703337, guid: d7b1ce6e063381549bac1094ed5d5a97, type: 3}
-  iceEffect: {fileID: 0}
+  iceEffect: {fileID: 412267046687703337, guid: 9f55fe8e2c72ea846bd889d24bd83356, type: 3}

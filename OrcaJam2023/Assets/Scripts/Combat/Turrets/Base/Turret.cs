@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour, IPlaceable
 
     float _curInterval;
 
-    public Action onHit;
+    public Action<BasicEnemy> onHit;
 
     public bool placeable;
 

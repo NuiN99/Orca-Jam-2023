@@ -67,9 +67,9 @@ public class Deck : MonoBehaviour
     public void DrawReward()
     {
         //destroy last rewards
-        foreach(GameObject reward in rewardGameObject.transform)
+        foreach(Transform reward in rewardGameObject.transform)
         {
-            Destroy(reward);
+            Destroy(reward.gameObject);
         }
         //draw more rewards
         for (int i = 0; i < rewardSize; i++)

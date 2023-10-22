@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     protected Health target;
     protected float speed;
     protected int damage;
-    protected Action onHit;
+    protected Action<BasicEnemy> onHit;
 
     void Update()
     {
@@ -33,12 +33,12 @@ public class Projectile : MonoBehaviour
         if (Vector2.Distance(transform.position, target.transform.position) <= 0.25f)
         {
             target.TakeDamage(damage);
-            onHit?.Invoke();
+            onHit?.Invoke(target.GetComponent<BasicEnemy>());
             Destroy(gameObject);
         }
     }
 
-    public void Init(Health target, float speed, int damage, Action onHit)
+    public void Init(Health target, float speed, int damage, Action<BasicEnemy> onHit)
     {
         this.target = target;
         this.speed = speed;
