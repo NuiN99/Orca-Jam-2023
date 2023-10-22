@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour, IDamageable
 {
-    public Path path;
     public Health health;
 
     void Awake()
     {
         health = GetComponent<Health>();
-        path = FindObjectOfType<Path>();
     }
 
     void IDamageable.Damaged()

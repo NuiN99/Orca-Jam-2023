@@ -10,7 +10,19 @@ public class WaveManager : MonoBehaviour
     public int currentLevel = 1;
     public int currentWave = 1;
 
-    Path _path;
+    [SerializeField] BoxCollider2D spawnCollider;
+    Bounds SpawnBounds => spawnCollider.bounds;
+
+    Vector2 RandomPos
+    {
+        get
+        {
+            float x = Random.Range(-SpawnBounds.extents.x, SpawnBounds.extents.x);
+            float y = Random.Range(-SpawnBounds.extents.y, SpawnBounds.extents.y);
+
+            return new Vector3(x, y) + SpawnBounds.center;
+        }
+    }
 
     [SerializeField] BasicEnemy[] general;
     [SerializeField] BasicEnemy[] tank;
@@ -21,11 +33,6 @@ public class WaveManager : MonoBehaviour
 
     int EnemiesPerWave => currentLevel * currentWave + Random.Range(3, 8);
     float TimeBetweenEnemies => Random.Range(1, 3) * (1f / (currentLevel * currentWave));
-
-    void Awake()
-    {
-        _path = FindObjectOfType<Path>();
-    }
 
     [ContextMenu("Start Wave")]
     public void StartWave()
@@ -44,7 +51,7 @@ public class WaveManager : MonoBehaviour
         while (totalSpawnedEnemies < enemyCount)
         {
             BasicEnemy randEnemy = GetEnemy();
-            Instantiate(randEnemy, _path.waypoints[0].position, Quaternion.identity);
+            Instantiate(randEnemy, RandomPos, Quaternion.identity);
             miniWaveSpawnedEnemies++;
             totalSpawnedEnemies++;
             yield return new WaitForSeconds(timeBetweenEnemies);

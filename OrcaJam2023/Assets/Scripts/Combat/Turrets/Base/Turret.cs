@@ -61,7 +61,7 @@ public class Turret : MonoBehaviour, IPlaceable
         {
             if (!hit.collider.TryGetComponent(out BasicEnemy enemy)) continue;
 
-            float distFromEnd = Vector2.Distance(enemy.transform.position, enemy.path.waypoints[^1].position);
+            float distFromEnd = Village.instance.transform.position.x - hit.transform.position.x;
 
             if (distFromEnd < closestDist)
             {
