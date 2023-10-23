@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 using Random = UnityEngine.Random;
 
 public class WaveManager : MonoBehaviour
@@ -125,6 +124,7 @@ public class WaveManager : MonoBehaviour
             1 => GetRandomEnemyArray()[0],
             2 => GetRandomEnemyArray()[1],
             3 => GetRandomEnemyArray()[2],
+            _ => GetRandomEnemyArray()[2]
         };
     }
 

@@ -43,7 +43,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
             OnDeath?.Invoke();
         }
 
-        SoundPlayer.instance.PlaySound(deathAudioClip, Random.Range(0.6f,0.85f));
+        SoundPlayer.instance.PlaySound(deathAudioClip, 1);
 
         Destroy(gameObject);
     }

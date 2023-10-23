@@ -1,4 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -76,7 +76,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public void OnPointerEnter(PointerEventData eventData)
     {
         runningCoroutine = StartCoroutine(MoveUp(0.1f));
-        SoundPlayer.instance.PlaySound(cardAudioClip[Random.Range(0,cardAudioClip.Length)], 0.7f);
+        SoundPlayer.instance.PlaySound(cardAudioClip[Random.Range(0,cardAudioClip.Length)], 1f);
     }
 
     public void OnPointerExit(PointerEventData eventData)

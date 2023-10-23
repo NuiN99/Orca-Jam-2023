@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   rarity: 0
   cost: 50
-  cardName: Wizzard
+  cardName: Wizard
   description: I cast "Burn everything in that general direction"
   turret: {fileID: 6871366569138413065, guid: 722ad9f1d4682ef45bfb93b9efd28d70, type: 3}
+  upgradeType: 0

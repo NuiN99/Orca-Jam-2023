@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  shootAudioClip: {fileID: 0}
+  clipVolume: 0.01
   damage: 3
   atkInterval: 1
   projectileSpeed: 0

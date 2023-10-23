@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   rarity: 0
   cost: 10
-  cardName: Gunner
+  cardName: Ballista
   description: it shoots it's gun!
   turret: {fileID: 2676057458697926699, guid: 215e2773558b67747b206236a973757b, type: 3}
+  upgradeType: 0
