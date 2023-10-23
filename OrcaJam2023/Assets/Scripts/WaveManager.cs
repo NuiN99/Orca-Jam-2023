@@ -100,7 +100,7 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        yield return new WaitUntil(()=> currentEnemyCount == 0);
+        yield return new WaitUntil(()=> currentEnemyCount == 0  && totalSpawnedEnemies >= enemyCount);
 
         currentWave++;
 
