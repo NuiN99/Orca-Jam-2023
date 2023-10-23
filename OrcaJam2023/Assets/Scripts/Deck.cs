@@ -66,7 +66,7 @@ public class Deck : MonoBehaviour
 
     public void PayDraw()
     {
-       if(GameManager.instance.gold >= 50)
+       if(GameManager.instance.gold >= 50 && handGameObject.transform.childCount < handSize)
         {
             DrawCard();
             GameManager.instance.gold -= 50;
