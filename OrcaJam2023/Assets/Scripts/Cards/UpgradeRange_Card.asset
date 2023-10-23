@@ -16,6 +16,6 @@ MonoBehaviour:
   rarity: 0
   cost: 20
   cardName: Range Upgrade
-  description: 'This one also shoots! '
+  description: RANGE MAN MAN YEPPERS
   turret: {fileID: 6871366569138413065, guid: 9302e963dd3502748837d552b187fd9f, type: 3}
   upgradeType: 5
