@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   rarity: 0
-  cost: 150
+  cost: 75
   cardName: Priest
   description: Bring forth the holy hand grenade
   turret: {fileID: 6871366569138413065, guid: dc595d5b221caac4c9dcb85644edb215, type: 3}
+  upgradeType: 0

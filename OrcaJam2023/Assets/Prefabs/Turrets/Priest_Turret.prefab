@@ -51,8 +51,8 @@ MonoBehaviour:
   target: {fileID: 0}
   shootAudioClip: {fileID: 0}
   clipVolume: 0.01
-  damage: 3
-  atkInterval: 1
+  damage: 5
+  atkInterval: 0.75
   projectileSpeed: 0
   detectionRadius: 1.5
   fov: 30

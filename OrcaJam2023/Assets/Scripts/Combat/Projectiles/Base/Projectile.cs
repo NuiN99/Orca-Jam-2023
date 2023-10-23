@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        if (Vector2.Distance(transform.position, target.transform.position) <= 0.25f)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 0.75f)
         {
             target.TakeDamage(damage);
             onHit?.Invoke(target.GetComponent<BasicEnemy>());
