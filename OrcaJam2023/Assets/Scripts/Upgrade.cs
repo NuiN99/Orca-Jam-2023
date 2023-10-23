@@ -43,7 +43,7 @@ public class Upgrade
                 break;
 
             case UpgradeType.AddDamage:
-                turret.UpgradeDamage(5);
+                turret.UpgradeDamage(10);
                 break;
 
             case UpgradeType.AddFirerate:
@@ -51,7 +51,7 @@ public class Upgrade
                 break;
 
             case UpgradeType.AddRange:
-                turret.UpgradeRange(5f);
+                turret.UpgradeRange(10f);
                 break;
         }
     }

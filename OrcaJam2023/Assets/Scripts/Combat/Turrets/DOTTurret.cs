@@ -22,6 +22,7 @@ public class DOTTurret : Turret
             {
                 FireEffect effect = new(enemy, 3f);
                 enemy.AddEffect(effect);
+                onHit?.Invoke(enemy);
             }
         }
 

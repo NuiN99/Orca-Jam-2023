@@ -43,6 +43,6 @@ public class Projectile : MonoBehaviour
         this.target = target;
         this.speed = speed;
         this.damage = damage;
-        this.onHit = onHit;
+        this.onHit += onHit;
     }
 }

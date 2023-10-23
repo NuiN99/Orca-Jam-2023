@@ -149,12 +149,12 @@ public class Turret : MonoBehaviour, IPlaceable
     public void UpgradeFirerate(float percent)
     {
         float mult = 1 - (percent / 100);
-        atkInterval -= atkInterval * mult;
+        atkInterval *= mult;
     }
 
     public void UpgradeRange(float percent)
     {
-        float mult = 1 - (percent / 100);
+        float mult = percent / 100;
         detectionRadius += detectionRadius * mult;
     }
 
