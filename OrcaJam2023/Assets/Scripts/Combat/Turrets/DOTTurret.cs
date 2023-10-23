@@ -32,7 +32,7 @@ public class DOTTurret : Turret
     
         IEnumerator ApplyBurnToEnemiesInRangeOverTime()
     {
-        SoundPlayer.instance.PlaySound(shootAudioClip, 0.70f);
+        SoundPlayer.instance.PlaySound(shootAudioClip, clipVolume);
         ApplyBurnToEnemiesInRange();
         yield return new WaitForSeconds(atkInterval);
         StartCoroutine(ApplyBurnToEnemiesInRangeOverTime());
