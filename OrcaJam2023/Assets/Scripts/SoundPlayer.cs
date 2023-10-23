@@ -11,8 +11,15 @@ public class SoundPlayer : MonoBehaviour
 
     void Awake()
     {
-        if(instance != null && instance != this) Destroy(gameObject);
-        else instance = this;
+        if (instance != null) {
+            Destroy(gameObject);
+                }
+        instance = this;
+    }
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
     }
 
     public void PlaySound(AudioClip clip, float vol)

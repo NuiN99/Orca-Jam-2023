@@ -64,6 +64,12 @@ MonoBehaviour:
   cost: {fileID: 6481509502109945748}
   cardName: {fileID: 8920837416369625458}
   description: {fileID: 5989432657280802090}
+  cardAudioClip:
+  - {fileID: 8300000, guid: 4b8d6fd452c067d4696da63f67c7d664, type: 3}
+  - {fileID: 8300000, guid: 3be7cdc877f2c5f46bb1f3060acdf6ef, type: 3}
+  - {fileID: 8300000, guid: 0507b3e3a77571b438f88778b6b2d4dc, type: 3}
+  - {fileID: 8300000, guid: 18b9111a4c71e2e468d6ef08fe8840dd, type: 3}
+  - {fileID: 8300000, guid: faefe6330a42b1e439944cebecec77cf, type: 3}
 --- !u!1 &5397041832131600432
 GameObject:
   m_ObjectHideFlags: 0

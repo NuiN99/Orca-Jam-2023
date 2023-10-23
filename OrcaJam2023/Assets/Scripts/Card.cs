@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Random = UnityEngine.Random;
 
 public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,6 +16,9 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
    [SerializeField] TMP_Text cardName;
    [SerializeField] TMP_Text description;
    [SerializeField] Coroutine runningCoroutine;
+
+    public AudioClip[] cardAudioClip;
+
 
 
     public static event Action OnPickedReward;
@@ -72,6 +76,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public void OnPointerEnter(PointerEventData eventData)
     {
         runningCoroutine = StartCoroutine(MoveUp(0.1f));
+        SoundPlayer.instance.PlaySound(cardAudioClip[Random.Range(0,cardAudioClip.Length)], 0.7f);
     }
 
     public void OnPointerExit(PointerEventData eventData)

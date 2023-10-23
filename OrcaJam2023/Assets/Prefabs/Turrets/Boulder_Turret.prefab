@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  shootAudioClip: {fileID: 8300000, guid: fbecef0ad4bcbed4d97ac65814e6e7a6, type: 3}
   damage: 25
   atkInterval: 3
   projectileSpeed: 5

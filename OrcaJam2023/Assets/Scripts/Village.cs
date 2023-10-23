@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Village : MonoBehaviour
 {
     public float health;
 
     public static Village instance;
-
+    public AudioClip[] hitAudioClip;
 
     public static event Action OnPlayerDeath;
 
@@ -25,6 +26,7 @@ public class Village : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out EnemyMovement enemy))
         {
+            SoundPlayer.instance.PlaySound(hitAudioClip[Random.Range(0, hitAudioClip.Length)], Random.Range(0.8f, 1f));
             if (!enemy.Attacking){
                 enemy.Attacking = true;
                 enemy.AttackAnimate();

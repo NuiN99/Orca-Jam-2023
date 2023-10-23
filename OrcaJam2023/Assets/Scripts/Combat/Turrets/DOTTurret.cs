@@ -29,8 +29,10 @@ public class DOTTurret : Turret
         ParticlesController.instance.SpawnPriestExplosion(transform.position);
     }
 
-    IEnumerator ApplyBurnToEnemiesInRangeOverTime()
+    
+        IEnumerator ApplyBurnToEnemiesInRangeOverTime()
     {
+        SoundPlayer.instance.PlaySound(shootAudioClip, 0.70f);
         ApplyBurnToEnemiesInRange();
         yield return new WaitForSeconds(atkInterval);
         StartCoroutine(ApplyBurnToEnemiesInRangeOverTime());
