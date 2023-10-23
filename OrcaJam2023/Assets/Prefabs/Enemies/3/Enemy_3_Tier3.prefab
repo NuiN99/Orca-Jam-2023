@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   gold: 6
+  deathAudioClip: {fileID: 8300000, guid: 5fa010a4dddece04997a315e1abde2a4, type: 3}
 --- !u!114 &2682506899407916613
 MonoBehaviour:
   m_ObjectHideFlags: 0

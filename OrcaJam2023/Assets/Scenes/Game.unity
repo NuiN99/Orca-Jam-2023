@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b133ad147675ca04dbd4aa9e1223be66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 1000
+  gold: 100
 --- !u!4 &177577360
 Transform:
   m_ObjectHideFlags: 0
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
-  currentWave: 5
+  currentWave: 1
   currentEnemyCount: 0
   spawnCollider: {fileID: 1410098391}
   general:
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 3153967598749443062, guid: cbca06b4142af1441b4d516260068e78, type: 3}
   handGameObject: {fileID: 650653742}
   rewardGameObject: {fileID: 1280854761}
-  handSize: 8
+  handSize: 5
   rewardSize: 3
 --- !u!4 &1832617396
 Transform:
