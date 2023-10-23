@@ -122,9 +122,9 @@ public class WaveManager : MonoBehaviour
     {
         return currentLevel switch
         {
-            <= 3 => GetRandomEnemyArray()[0],
-            > 3 and <= 6 => GetRandomEnemyArray()[1],
-            > 6 => GetRandomEnemyArray()[2],
+            1 => GetRandomEnemyArray()[0],
+            2 => GetRandomEnemyArray()[1],
+            3 => GetRandomEnemyArray()[2],
         };
     }
 

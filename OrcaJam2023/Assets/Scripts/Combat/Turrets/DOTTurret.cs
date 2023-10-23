@@ -20,7 +20,7 @@ public class DOTTurret : Turret
         {
             if (hit.collider.TryGetComponent(out BasicEnemy enemy))
             {
-                FireEffect effect = new(enemy, 3f);
+                FireEffect effect = new(enemy, 3f, damage);
                 enemy.AddEffect(effect);
                 onHit?.Invoke(enemy);
             }

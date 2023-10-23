@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
     public BasicEnemy furthestEnemy;
     public List<BasicEnemy> currentEnemies = new();
-
+    public GameObject healthbarPrefab;
     void Awake()
     {
         if (instance != null && instance != this) Destroy(gameObject);

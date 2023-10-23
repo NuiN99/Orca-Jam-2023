@@ -28,7 +28,7 @@ public class Upgrade
                 turret.onHit += (enemy) =>
                 {
                     if (enemy == null) return;
-                    FireEffect fireEffect = new(enemy, 2f);
+                    FireEffect fireEffect = new(enemy, 2f, 2);
                     enemy.AddEffect(fireEffect);
                 };
                 break;

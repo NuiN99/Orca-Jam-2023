@@ -356,7 +356,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8139095424593074739, guid: 215e2773558b67747b206236a973757b, type: 3}
       propertyPath: damage
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8139095424593074739, guid: 215e2773558b67747b206236a973757b, type: 3}
       propertyPath: m_Enabled
@@ -425,7 +425,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8139095424593074739, guid: 215e2773558b67747b206236a973757b, type: 3}
       propertyPath: damage
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8139095424593074739, guid: 215e2773558b67747b206236a973757b, type: 3}
       propertyPath: m_Enabled
@@ -1435,6 +1435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   furthestEnemy: {fileID: 0}
   currentEnemies: []
+  healthbarPrefab: {fileID: 5577100639718789352, guid: 5d54106fcc8ef5246b7d868ad4ba4e68, type: 3}
 --- !u!4 &1346637038
 Transform:
   m_ObjectHideFlags: 0
@@ -1615,7 +1616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1
-  currentWave: 25
+  currentWave: 5
   currentEnemyCount: 0
   spawnCollider: {fileID: 1410098391}
   general:

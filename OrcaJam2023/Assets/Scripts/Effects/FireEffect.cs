@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class FireEffect : Effect
 {
-    public FireEffect(BasicEnemy target, float duration) : base(target, duration)
+    int damage;
+    public FireEffect(BasicEnemy target, float duration, int damage) : base(target, duration)
     {
         this.target = target;
         this.duration = duration;
+        this.damage = damage;
     }
 
     public override void DealEffect()
     {
-        target.health.TakeDamage(2);
+        target.health.TakeDamage(damage);
         ParticlesController.instance.SpawnFire(target.transform);
     }
 }
