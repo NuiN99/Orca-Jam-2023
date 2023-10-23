@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Turret : MonoBehaviour, IPlaceable
 {
     public Health target;
-
+    public AudioClip shootAudioClip;
+  
     protected bool detect = true;
     
     [SerializeField] protected int damage = 1;
@@ -78,7 +80,7 @@ public class Turret : MonoBehaviour, IPlaceable
 
     public virtual void Shoot()
     {
-
+        SoundPlayer.instance.PlaySound(shootAudioClip, 0.70f);
     }
 
     bool InFOV()

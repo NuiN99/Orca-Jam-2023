@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BasicEnemy : MonoBehaviour, IDamageable
 {
@@ -10,7 +11,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     public static event Action<int> OnDeathGold;
     public static event Action OnDeath;
-
+    public AudioClip deathAudioClip;
     List<Effect> curEffects = new();
 
     void Awake()
@@ -25,7 +26,7 @@ public class BasicEnemy : MonoBehaviour, IDamageable
 
     void IDamageable.Damaged()
     {
-        print("damaged");
+       
     }
 
     void IDamageable.Die()
@@ -41,6 +42,8 @@ public class BasicEnemy : MonoBehaviour, IDamageable
         {
             OnDeath?.Invoke();
         }
+
+        SoundPlayer.instance.PlaySound(deathAudioClip, Random.Range(0.6f,0.85f));
 
         Destroy(gameObject);
     }
