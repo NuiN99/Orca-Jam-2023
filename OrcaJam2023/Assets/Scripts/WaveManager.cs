@@ -12,6 +12,8 @@ public class WaveManager : MonoBehaviour
     public int currentEnemyCount = 0;
     bool nextWave;
 
+    public int totalSpawnedEnemiesInWave;
+
     public static WaveManager instance;
 
     [SerializeField] BoxCollider2D spawnCollider;
@@ -75,6 +77,7 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator StartWave(int enemyCount)
     {
+        currentEnemyCount = 0;
         int totalSpawnedEnemies = 0;
         int miniWaveSpawnedEnemies = 0;
         float timeBetweenEnemies = TimeBetweenEnemies;
@@ -86,6 +89,7 @@ public class WaveManager : MonoBehaviour
             BasicEnemy randEnemy = GetEnemy();
             Instantiate(randEnemy, RandomPos, Quaternion.identity);
             currentEnemyCount++;
+            totalSpawnedEnemiesInWave = currentEnemyCount;
             miniWaveSpawnedEnemies++;
             totalSpawnedEnemies++;
             yield return new WaitForSeconds(timeBetweenEnemies);
@@ -99,7 +103,7 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        yield return new WaitUntil(()=> currentEnemyCount == 0  && totalSpawnedEnemies >= enemyCount);
+        yield return new WaitUntil(()=> currentEnemyCount <= 0  && totalSpawnedEnemies >= enemyCount);
 
         currentWave++;
 
