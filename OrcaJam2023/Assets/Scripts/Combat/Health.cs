@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        maxHealth *= Mathf.Max(1, WaveManager.instance.currentWave / 10); 
         _health = maxHealth;
 
         healthbar = Instantiate(EnemyManager.instance.healthbarPrefab, transform.position, Quaternion.identity).transform;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireEffect : Effect
 {
     int damage;
-    public FireEffect(BasicEnemy target, float duration, int damage) : base(target, duration)
+    public FireEffect(BasicEnemy target, float duration, int damage)
     {
         this.target = target;
         this.duration = duration;

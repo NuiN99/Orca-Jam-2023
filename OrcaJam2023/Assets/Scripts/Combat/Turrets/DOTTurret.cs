@@ -8,7 +8,7 @@ public class DOTTurret : Turret
     [SerializeField] GameObject damageEffect;
     void Start()
     {
-        detect = false;
+        //detect = false;
         StartCoroutine(ApplyBurnToEnemiesInRangeOverTime());
     }
 
@@ -28,10 +28,9 @@ public class DOTTurret : Turret
 
         ParticlesController.instance.SpawnPriestExplosion(transform.position);
     }
-
-    
-        IEnumerator ApplyBurnToEnemiesInRangeOverTime()
+    IEnumerator ApplyBurnToEnemiesInRangeOverTime()
     {
+        yield return new WaitUntil(() => target != null);
         SoundPlayer.instance.PlaySound(shootAudioClip, clipVolume);
         ApplyBurnToEnemiesInRange();
         yield return new WaitForSeconds(atkInterval);

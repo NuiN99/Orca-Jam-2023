@@ -3972,18 +3972,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6154661535011736550, guid: 12b4ef8c7af63164abf333c70f218320, type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6570915831991005600, guid: 12b4ef8c7af63164abf333c70f218320, type: 3}
       propertyPath: m_Name
       value: SoundPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 7539666134938876211, guid: 12b4ef8c7af63164abf333c70f218320, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 8f9a483c18b092144bb3bd4e8b6a3bc2, type: 3}
     - target: {fileID: 8193548814409549752, guid: 12b4ef8c7af63164abf333c70f218320, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceEffect : Effect
 {
-    public IceEffect(BasicEnemy target, float duration) : base(target, duration)
+    public IceEffect(BasicEnemy target, float duration)
     {
         this.target = target;
         this.duration = duration;
